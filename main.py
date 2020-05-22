@@ -2,6 +2,7 @@ from pdf2image import convert_from_path
 import requests
 import os
 from sys import platform
+import fnmatch
 
 if platform == "linux" or platform == "linux2":
     pass
@@ -60,5 +61,5 @@ def main(gid):
 for gid in gs_table:
     main(gid)
 
-os.remove(path + 'test-table.pdf')
-os.remove(path + 'test-table0001-1.jpg')
+os.remove(fnmatch.filter(os.listdir('files'), '*.pdf'))
+os.remove(fnmatch.filter(os.listdir('files'), '*.jpg'))
